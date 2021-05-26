@@ -1,0 +1,40 @@
+{
+  "name": "lukechannings.com",
+  "version": "1.0.0",
+  "description": "Luke Channings is a developer.",
+  "author": "Luke Channings <contact@lukechannings.com>",
+  "homepage": "https://lukechannings.com",
+  "scripts": {
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "format": "prettier --ignore-path .gitignore -w \"**/*.{js,ts,tsx,json,markdown}\"",
+    "lint": "run-p lint:*",
+    "lint:codestyle": "prettier --ignore-path .gitignore -c \"**/*.{js,ts,tsx,json,markdown}\"",
+    "lint:typescript": "tsc"
+  },
+  "dependencies": {
+    "gatsby": "^3.x.x",
+    "gatsby-plugin-feed": "^3.x.x",
+    "gatsby-plugin-image": "^1.x.x",
+    "gatsby-plugin-react-helmet": "^4.x.x",
+    "gatsby-plugin-sitemap": "^4.x.x",
+    "gatsby-plugin-typegen": "^2.x.x",
+    "gatsby-plugin-typescript": "^3.x.x",
+    "gatsby-source-filesystem": "^3.x.x",
+    "gatsby-transformer-remark": "^4.x.x",
+    "npm-run-all": "^4.x.x",
+    "react": "^17.x.x",
+    "react-dom": "^17.x.x",
+    "react-helmet": "^6.x.x"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^17.x.x",
+    "prettier": "^2.x.x"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": false,
+    "trailingComma": "all",
+    "arrowParens": "avoid"
+  }
+}

@@ -1,0 +1,84 @@
+---
+title: Why I prefer HSL to RGB
+author: Luke Channings
+category: front-end
+date: 2021-05-26
+tags:
+  - CSS
+---
+
+# Why I prefer HSL to RGB
+
+Outline:
+
+- Background: RGB and how I've been thinking about colours
+- Another way to think about colours
+- Argument: HSL is easier to work with than RGB, you're just used to RGB
+- Argument: Switching to HSL is worthwhile
+  - Example: Brightening components on hover
+  - Example: Theming a UI with a key colour
+  - Example: Generating a random colour but still controlling the brightness / saturation
+
+## Background: RGB and how I've been thinking about colours
+
+Turn your mind back to when you first learned colours in CSS - whether it was yesterday or 20 years ago - and think about what you learned.
+
+Chances are that your first introduction to CSS Colours was the hex syntax[^1]: `#ff0000` red, `#00ff00` green, `#0000ff` blue.
+You learn that mixing different amounts of red, green, and blue light can create any colour, and that's how you start to think about colours in CSS.
+
+When you learn RGB, you can learn that higher numbers make the colour lighter, and lower numbers make the colour darker, but there is no intuition for what colour `#800020` will come out as (burgundy).
+
+Another way to think about colours
+
+With RGB, we think of a colour as mixing red, green, and blue, kinda like painting. But there's another way to think about colours that we've been using this whole time: the colour circle.
+
+<style>
+  .boxes {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: hsl(
+      var(--hue, 180),
+      var(--saturation, 50%),
+      var(--brightness, 50%)
+    );
+  }
+</style>
+
+<fieldset>
+<label>
+  Hue
+  <input
+    type="range"
+    oninput="javascript:boxes.style.setProperty('--hue', event.target.value)"
+    min="0"
+    max="360"
+    value="180"
+  />
+</label>
+
+<label>
+  Brightness
+  <input
+    type="range"
+    oninput="javascript:boxes.style.setProperty('--brightness', event.target.value + '%')"
+    min="0"
+    max="100"
+    value="50"
+  />
+</label>
+</fieldset>
+<div class="boxes" id="boxes">
+  <script>
+    for (let i = 0; i < 10; i += 1) {
+      document.write(`<div class="box" style="--saturation: ${i * 10}%"></div>`)
+    }
+  </script>
+</div>
+
+[^1]: I'm only talking about complete systems for representing any colour, I know you probably learned colour names first.

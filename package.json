@@ -14,8 +14,10 @@
   },
   "dependencies": {
     "gatsby": "^3.x.x",
+    "gatsby-plugin-feed": "^3.x.x",
     "gatsby-plugin-image": "^1.x.x",
     "gatsby-plugin-react-helmet": "^4.x.x",
+    "gatsby-plugin-sitemap": "^4.x.x",
     "gatsby-plugin-typegen": "^2.x.x",
     "gatsby-plugin-typescript": "^3.x.x",
     "gatsby-source-filesystem": "^3.x.x",

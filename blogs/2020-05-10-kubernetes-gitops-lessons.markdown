@@ -1,4 +1,5 @@
 ---
+title: Mistakes made and lessons learned with Kubernetes and GitOps
 author: Luke Channings
 category: devops
 date: 2020-05-10

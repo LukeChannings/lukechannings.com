@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Luke Channings is a developer.`,
-    author: `@LukeChannings`,
+    author: `Luke Channings`,
     siteUrl: `https://lukechannings.com`,
   },
   flags: {

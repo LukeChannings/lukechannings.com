@@ -1,3 +1,11 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 
-export default () => <h1>Four oh fore</h1>
+export default () => (
+  <>
+    <Helmet>
+      <title>Not Found</title>
+    </Helmet>
+    <h1>Not Found 👀</h1>
+  </>
+)

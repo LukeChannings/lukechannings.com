@@ -1,7 +1,11 @@
 import React from "react"
+import { Helmet } from "react-helmet"
 
 export default () => (
   <>
+    <Helmet>
+      <title>Luke Channings</title>
+    </Helmet>
     <header>
       <h1 itemProp="name">
         Luke Channings{" "}

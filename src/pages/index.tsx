@@ -25,8 +25,10 @@ export default () => (
           <span itemProp="knowsAbout">Front-End Architecture</span>
         </li>
         <li>
-          <span itemProp="knowsAbout">React</span>,
-          <span itemProp="knowsAbout">Redux</span>,
+          <span itemProp="knowsAbout">React</span>
+          {", "}
+          <span itemProp="knowsAbout">Redux</span>
+          {", "}
           <span itemProp="knowsAbout">CSS Modules</span>, etc.
         </li>
         <li>
@@ -34,15 +36,18 @@ export default () => (
           Babel, TS, etc)
         </li>
         <li>
-          <span itemProp="knowsAbout">Webpack</span> |
-          <span itemProp="knowsAbout">Make</span> |
+          <span itemProp="knowsAbout">Webpack</span>
+          {" | "}
+          <span itemProp="knowsAbout">Make</span>
+          {" | "}
           <span itemProp="knowsAbout">Grunt</span>
         </li>
         <li>
           <span itemProp="knowsAbout">Node.js</span>
         </li>
         <li>
-          <span itemProp="knowsAbout">Express</span> |
+          <span itemProp="knowsAbout">Express</span>
+          {" | "}
           <span itemProp="knowsAbout">Koa</span>,
           <span itemProp="knowsAbout">Swagger</span> for designing REST APIs
           (and API Gateway security)
@@ -51,10 +56,14 @@ export default () => (
           Testing with <span itemProp="knowsAbout">Jest</span>, usually
         </li>
         <li>
-          <span itemProp="knowsAbout">GitLab</span>,
-          <span itemProp="knowsAbout">Jenkins</span>,
-          <span itemProp="knowsAbout">S3</span>,
-          <span itemProp="knowsAbout">CloudFront</span>,
+          <span itemProp="knowsAbout">GitLab</span>
+          {", "}
+          <span itemProp="knowsAbout">Jenkins</span>
+          {", "}
+          <span itemProp="knowsAbout">S3</span>
+          {", "}
+          <span itemProp="knowsAbout">CloudFront</span>
+          {", "}
           <span itemProp="knowsAbout">Lambda</span>, Terraform, AWSCLI, and lest
           we forget good ol' SSH and SCP.
         </li>
@@ -354,10 +363,13 @@ export default () => (
       <h2>What else do I do?</h2>
       <ul>
         <li>
-          I have a new love for home automation. I've got deep into
-          <a href="https://en.wikipedia.org/wiki/MQTT">MQTT</a>,{" "}
-          <a href="https://github.com/Koenkk/zigbee2mqtt">Zigbee</a>,{" "}
-          <a href="https://www.home-assistant.io">Home Assistant</a>, and{" "}
+          I have a new love for home automation. I've got deep into{" "}
+          <a href="https://en.wikipedia.org/wiki/MQTT">MQTT</a>
+          {", "}
+          <a href="https://github.com/Koenkk/zigbee2mqtt">Zigbee</a>
+          {", "}
+          <a href="https://www.home-assistant.io">Home Assistant</a>
+          {", and "}
           <a href="https://developer.amazon.com/alexa">Alexa</a>. IoT and Home
           Automation are two things that are very hard to do without big
           security risks, and I spend some of my free time designing a home

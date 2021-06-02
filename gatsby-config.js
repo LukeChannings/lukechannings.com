@@ -17,6 +17,7 @@ module.exports = {
       options: {
         name: `blogs`,
         path: `${__dirname}/blogs`,
+        ignore: ["**/_*"],
       },
     },
     {
@@ -73,7 +74,7 @@ module.exports = {
               }
             `,
             output: "/rss.xml",
-            title: "Luke's blog",
+            title: "Luke Channings",
             match: "^/blog/",
           },
         ],

@@ -31,7 +31,7 @@ And here's the best explanation of the `100vh` issues in Mobile Safari that I've
 
 > The core issue is that mobile browsers (I’m looking at you, Chrome and Safari) have a “helpful” feature where the address bar is sometimes visible and sometimes hidden, changing the visible size of the viewport.
 >
-> Rather than adjusting the height of `100vh` to be the visible portion of the screen as the viewport height changes, these browsers instead have `100vh` set to the height of the browser with address the address bar hidden.
+> Rather than adjusting the height of `100vh` to be the visible portion of the screen as the viewport height changes, these browsers instead have `100vh` set to the height of the browser with the address bar hidden.
 >
 > The result is that the bottom portion of the screen will be cut off when the address bar is visible, thus defeating the purpose of `100vh` to begin with.
 >
@@ -39,13 +39,16 @@ And here's the best explanation of the `100vh` issues in Mobile Safari that I've
 
 ## Let's put this new Safari to the test
 
-I have [a simple HTML page](https://gist.github.com/LukeChannings/efdd456bccc3ee1459eacc663e9abc24) based on the example given in David's article,
-it has a header at the top, a button at the bottom, all wrapped in a `100vh` container.
+I have [a simple HTML page](https://gist.github.com/LukeChannings/efdd456bccc3ee1459eacc663e9abc24) based on the example given in David's article.
+It has a header at the top and a button at the bottom, all wrapped in a `100vh` container.
 
 <div className="image-group-figure">
   <figure>
     <img
       src={ios14ChromeUrl}
+      style={{ aspectRatio: "563 / 1219" }}
+      decoding="async"
+      loading="lazy"
       alt="an image showing the aforementioned button hidden below the bottom UI controls in iOS 14's Mobile Safari"
     />
     <figcaption>Safari 14 with Chrome active</figcaption>
@@ -53,6 +56,9 @@ it has a header at the top, a button at the bottom, all wrapped in a `100vh` con
   <figure>
     <img
       src={ios15ChromeUrl}
+      style={{ aspectRatio: "563 / 1219" }}
+      decoding="async"
+      loading="lazy"
       alt="an image showing the button being partially covered by the new floating address bar in iOS 15's Mobile Safari"
     />
     <figcaption>Safari 15 with Chrome active</figcaption>
@@ -71,7 +77,7 @@ It makes sense to me that the WebKit team wouldn't change the behaviour of the v
 Do you remember when Apple introduced `env()` and `safe-area-inset` so
 that web developers could avoid their content being shown behind the notch[^4]?
 
-Well, in Safari 14 `safe-area-inset-bottom` is `0px` whether the UI chrome is active or inactive,
+Well in Safari 14, `safe-area-inset-bottom` is `0px` whether the UI chrome is active or inactive,
 which is something that has annoyed me for a while.
 
 `safe-area-inset-bottom` is `0px` when the UI chrome is inactive in Safari 15 on iOS,
@@ -83,10 +89,12 @@ That means that to get a button to float at the bottom of the page, always above
   <figure>
     <video
       src={ios14SafeAreaInsetBottomUrl}
+      style={{ aspectRatio: "563 / 1219" }}
       playsinline
       loop
       muted
       autoplay
+      preload
     ></video>
     <figcaption>
       Safari 14 with <strong>100vh - safe-area-inset-bottom</strong>
@@ -95,10 +103,12 @@ That means that to get a button to float at the bottom of the page, always above
   <figure>
     <video
       src={ios15SafeAreaInsetBottomUrl}
+      style={{ aspectRatio: "563 / 1219" }}
       playsinline
       loop
       muted
       autoplay
+      preload
     ></video>
     <figcaption>
       Safari 15 with <strong>100vh - safe-area-inset-bottom</strong>
@@ -111,7 +121,7 @@ That means that to get a button to float at the bottom of the page, always above
 So not only does `safe-area-inset-bottom` work in Safari 15, **it's animated**!
 
 I've been hoping that something to remedy the viewport height bug was coming since
-[Jen Simmons](https://jensimmons.com)[^5] was asking for feedback regarding viewport
+[Jen Simmons](https://jensimmons.com) (who joined the Safari / WebKit team in June 2020) was asking for feedback regarding viewport
 height issues.
 
 <blockquote class="twitter-tweet">
@@ -121,8 +131,12 @@ height issues.
     which layout mechanism? What do you need? Screenshots &amp; sample code
     appreciated.
   </p>
-  &mdash; Jen Simmons (<a href="https://twitter.com/jensimmons">@jensimmons</a>){" "}
-  <a href="https://twitter.com/jensimmons/status/1393554029721104384?ref_src=twsrc%5Etfw">
+  &mdash; Jen Simmons (<a target="_blank" href="https://twitter.com/jensimmons">
+    @jensimmons
+  </a>) <a
+    target="_blank"
+    href="https://twitter.com/jensimmons/status/1393554029721104384?ref_src=twsrc%5Etfw"
+  >
     May 15, 2021
   </a>
 </blockquote>
@@ -132,11 +146,14 @@ height issues.
     Have a feeling I’m going to be talking about Environment Variables a lot
     this week. They are really cool &amp; supported!
     <br />
-    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/env()">
+    <a
+      target="_blank"
+      href="https://developer.mozilla.org/en-US/docs/Web/CSS/env()"
+    >
       https://developer.mozilla.org/en-US/docs/Web/CSS/env()
     </a>
     <br />
-    <a href="https://caniuse.com/css-env-function">
+    <a target="_blank" href="https://caniuse.com/css-env-function">
       https://caniuse.com/css-env-function
     </a>
     <br />
@@ -147,8 +164,12 @@ height issues.
     <br />
     height: calc(100vh - env(safe-area-inset-bottom));
   </p>
-  &mdash; Jen Simmons (<a href="https://twitter.com/jensimmons">@jensimmons</a>){" "}
-  <a href="https://twitter.com/jensimmons/status/1402028742772408327?ref_src=twsrc%5Etfw">
+  &mdash; Jen Simmons (<a target="_blank" href="https://twitter.com/jensimmons">
+    @jensimmons
+  </a>) <a
+    target="_blank"
+    href="https://twitter.com/jensimmons/status/1402028742772408327?ref_src=twsrc%5Etfw"
+  >
     June 7, 2021
   </a>
 </blockquote>
@@ -159,4 +180,3 @@ It looks like this one's fixed!
 [^2]: https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
 [^3]: https://github.com/w3c/csswg-drafts/issues/4329
 [^4]: https://webkit.org/blog/7929/designing-websites-for-iphone-x/
-[^5]: Jen Simmons left Mozilla to join Apple in June 2020. She has been contributing hugely to the WebKit team, and has pushed the team to fix problems around tooling and compatibility.

@@ -2,10 +2,11 @@ module.exports = {
   siteMetadata: {
     title: `Luke Channings is a developer.`,
     titleTemplate: `%s · Luke Channings`,
+    description: "Luke Channings is a developer.",
     author: `Luke Channings`,
-    siteUrl: `https://lukechannings.com`,
-    url: `https://lukechannings.com`,
+    siteUrl: `https://lukechannings.com/`,
     twitterUsername: "@LukeChannings",
+    image: "avatar.jpeg",
   },
   flags: {
     FAST_DEV: true,

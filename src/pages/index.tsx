@@ -1,16 +1,19 @@
 import React from "react"
-import { Helmet } from "react-helmet"
+import SEO from "../components/seo"
 
 export default () => (
   <>
-    <Helmet>
-      <title>Luke Channings</title>
-    </Helmet>
+    <SEO
+      title={"Luke Channings is a freelance developer"}
+      description="Luke Channings is a freelance developer"
+      image="avatar.jpeg"
+      article
+    />
     <header>
       <h1 itemProp="name">
         Luke Channings{" "}
         <p>
-          is a <span itemProp="jobTitle">Freelance Programmer</span> in{" "}
+          is a <span itemProp="jobTitle">Freelance Developer</span> in{" "}
           <span itemProp="workLocation">London</span>
         </p>
       </h1>
@@ -255,6 +258,15 @@ export default () => (
     <section id="some-things-ive-worked-on">
       <h2>Project links</h2>
       <ul>
+        <li>
+          <a
+            target="_blank"
+            href="https://github.com/lukechannings/moviematch"
+            className="uri"
+          >
+            MovieMatch - A web app to help groups pick a movie to watch on Plex
+          </a>
+        </li>
         <li>
           <a
             target="_blank"

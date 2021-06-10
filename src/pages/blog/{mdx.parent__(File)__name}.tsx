@@ -1,7 +1,7 @@
 import * as React from "react"
 import { graphql } from "gatsby"
-import { Helmet } from "react-helmet"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import SEO from "../../components/seo"
 
 export default ({ data }: { data: GatsbyTypes.MDXBlogPageQuery }) => {
   if (!data.mdx) {
@@ -10,11 +10,12 @@ export default ({ data }: { data: GatsbyTypes.MDXBlogPageQuery }) => {
 
   return (
     <>
-      <Helmet>
-        <title>
-          {data.mdx?.frontmatter?.title} - {data.mdx?.frontmatter?.author}
-        </title>
-      </Helmet>
+      <SEO
+        title={data.mdx?.frontmatter?.title ?? ""}
+        description=""
+        image=""
+        article
+      />
       <div className="wrapper">
         <main>
           <h1>{data.mdx?.frontmatter?.title}</h1>

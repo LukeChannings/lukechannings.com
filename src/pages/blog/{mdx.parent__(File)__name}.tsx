@@ -4,6 +4,10 @@ import { Helmet } from "react-helmet"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
 export default ({ data }: { data: GatsbyTypes.MDXBlogPageQuery }) => {
+  if (!data.mdx) {
+    throw new Error(`No content found for page.`)
+  }
+
   return (
     <>
       <Helmet>

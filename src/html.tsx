@@ -1,7 +1,15 @@
-import React from "react"
-import PropTypes from "prop-types"
+import React, { HTMLAttributes, ReactNode } from "react"
 
-export default function HTML(props) {
+interface HTMLProps {
+  htmlAttributes: HTMLAttributes<HTMLElement>
+  headComponents: ReactNode
+  bodyAttributes: HTMLAttributes<HTMLBodyElement>
+  preBodyComponents: ReactNode
+  body: string
+  postBodyComponents: ReactNode
+}
+
+export default function HTML(props: HTMLProps) {
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -10,16 +18,6 @@ export default function HTML(props) {
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover"
-        />
-        <meta
-          name="theme-color"
-          content="#fff"
-          media="(prefers-color-scheme: light)"
-        />
-        <meta
-          name="theme-color"
-          content="#171717"
-          media="(prefers-color-scheme: dark)"
         />
         {props.headComponents}
       </head>
@@ -34,13 +32,4 @@ export default function HTML(props) {
       </body>
     </html>
   )
-}
-
-HTML.propTypes = {
-  htmlAttributes: PropTypes.object,
-  headComponents: PropTypes.array,
-  bodyAttributes: PropTypes.object,
-  preBodyComponents: PropTypes.array,
-  body: PropTypes.string,
-  postBodyComponents: PropTypes.array,
 }

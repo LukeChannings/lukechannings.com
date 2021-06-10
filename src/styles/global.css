@@ -40,6 +40,7 @@ body {
   margin: 0;
   padding: 0;
   outline: none;
+  box-sizing: border-box;
 }
 
 header,
@@ -141,6 +142,7 @@ blockquote {
 .twitter-tweet {
   border-left: 0.5rem solid #55acee;
   padding: 1rem;
+  overflow: hidden;
 }
 
 p > code,
@@ -151,6 +153,10 @@ figcaption > code {
   padding: 1px 2px;
   font-weight: bold;
   font-family: monospace;
+}
+
+p > a {
+  text-overflow: ellipsis;
 }
 
 .image-group-figure {

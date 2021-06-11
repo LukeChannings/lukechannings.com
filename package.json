@@ -6,7 +6,7 @@
   "homepage": "https://lukechannings.com",
   "scripts": {
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "env GIT_BRANCH_NAME=\"$(git rev-parse --abbrev-ref HEAD)\" gatsby build",
     "format": "prettier --ignore-path .gitignore -w \"**/*.{js,ts,tsx,json,markdown}\"",
     "lint": "run-p lint:*",
     "lint:codestyle": "prettier --ignore-path .gitignore -c \"**/*.{js,ts,tsx,json,markdown}\"",

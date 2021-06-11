@@ -1,6 +1,12 @@
 const buildDrafts = !!process.env.BUILD_DRAFTS
+const previewDomain = !!process.env.CFP_PREVIEW_DOMAIN
 
-console.log(process.env)
+const siteUrl = previewDomain
+  ? `https://${process.env.GIT_BRANCH_NAME.slice(
+      0,
+      28,
+    )}.${cloudflarePagesPreviewUrl}`
+  : `https://lukechannings.com/`
 
 module.exports = {
   siteMetadata: {
@@ -8,7 +14,7 @@ module.exports = {
     titleTemplate: `%s · Luke Channings`,
     description: "The website and blog of Luke Channings",
     author: `Luke Channings`,
-    siteUrl: `https://lukechannings.com/`,
+    siteUrl,
     twitterUsername: "@LukeChannings",
     image: "blog-image-default.jpeg",
   },

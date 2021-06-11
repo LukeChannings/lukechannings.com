@@ -254,6 +254,11 @@ export default () => (
       <h2>Project links</h2>
       <ul>
         <li>
+          <a target="_blank" href="/blog" className="uri">
+            Blog
+          </a>
+        </li>
+        <li>
           <a
             target="_blank"
             href="https://github.com/lukechannings/moviematch"

@@ -6,7 +6,7 @@ import { dateFormatter } from "../../util"
 export default () => {
   const blogItems = useStaticQuery<GatsbyTypes.BlogListQuery>(graphql`
     query BlogList {
-      allMdx(sort: { fields: frontmatter___date }) {
+      allMdx(sort: { fields: frontmatter___date, order: DESC }) {
         edges {
           node {
             frontmatter {

@@ -1,8 +1,19 @@
+const buildDrafts = !!process.env.BUILD_DRAFTS
+const previewDomain = process.env.CFP_PREVIEW_DOMAIN
+
+const siteUrl = previewDomain
+  ? `https://${process.env.GIT_BRANCH_NAME.slice(0, 28)}.${previewDomain}`
+  : `https://lukechannings.com/`
+
 module.exports = {
   siteMetadata: {
     title: `Luke Channings is a developer.`,
+    titleTemplate: `%s · Luke Channings`,
+    description: "The website and blog of Luke Channings",
     author: `Luke Channings`,
-    siteUrl: `https://lukechannings.com`,
+    siteUrl,
+    twitterUsername: "@LukeChannings",
+    image: "blog-image-default.jpeg",
   },
   flags: {
     FAST_DEV: true,
@@ -12,12 +23,13 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-mdx`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `blogs`,
-        path: `${__dirname}/blogs`,
-        ignore: ["**/_*"],
+        path: `${__dirname}/blogs/`,
+        ignore: buildDrafts ? [] : ["**/_*"],
       },
     },
     {
@@ -43,8 +55,8 @@ module.exports = {
         `,
         feeds: [
           {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.edges.map(edge => {
+            serialize: ({ query: { site, allMdx } }) => {
+              return allMdx.edges.map(edge => {
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
                   date: edge.node.frontmatter.date,
@@ -55,24 +67,23 @@ module.exports = {
               })
             },
             query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  edges {
-                    node {
-                      excerpt
-                      html
-                      fields { slug }
-                      frontmatter {
-                        title
-                        date
-                      }
+            {
+              allMdx(sort: {order: DESC, fields: [frontmatter___date]}) {
+                edges {
+                  node {
+                    excerpt
+                    fields {
+                      slug
                     }
+                    frontmatter {
+                      title
+                      date
+                    }
+                    html
                   }
                 }
               }
-            `,
+            }`,
             output: "/rss.xml",
             title: "Luke Channings",
             match: "^/blog/",

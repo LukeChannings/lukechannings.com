@@ -1,0 +1,183 @@
+---
+title: Does Safari 15 finally fix viewport height?
+author: Luke Channings
+category: front-end
+date: 11 Jun, 2021, 13:30 UTC+1
+tags: ["CSS", "Safari 15"]
+image: blog-image-2021-06-09.jpeg
+---
+
+import ios14ChromeUrl from "./assets/ios14-with-chrome.jpg"
+import ios15ChromeUrl from "./assets/ios15-with-chrome.jpg"
+import ios14SafeAreaInsetBottomUrl from "./assets/ios14-safe-area-inset-bottom.mp4"
+import ios15SafeAreaInsetBottomUrl from "./assets/ios15-safe-area-inset-bottom.mp4"
+
+**TL;DR**: [No](https://en.wikipedia.org/wiki/Betteridge's_law_of_headlines), but if you subtract `env(safe-area-inset-bottom)` from `100vh` you'll get what you want.
+
+Safari 15's UI is a radical departure from the previous version &mdash; and from web browsers in general &mdash; but does it fix the viewport height problem?
+
+## What is the viewport height problem again?
+
+Mobile Safari has had problems related to `100vh` not behaving like web developers expect[^1] [^2] pretty much since the beginning.
+The main crux of the issue is that Mobile Safari's UI Chrome shrinks when you scroll, and expands again when you activate it.
+That means `100vh` ("100% the height of the viewport") can't be a static number.
+
+Let's start by understanding the definition of the `vh` unit [^3]:
+
+> `vh` is defined as `Equal to 1% of the height of the initial containing block`.
+>
+> &mdash; <cite>[Anthony Frehner](https://twitter.com/aahfrena)</cite>
+
+And here's the best explanation of the `100vh` issues in Mobile Safari that I've seen so far,
+
+> The core issue is that mobile browsers (I’m looking at you, Chrome and Safari) have a “helpful” feature where the address bar is sometimes visible and sometimes hidden, changing the visible size of the viewport.
+>
+> Rather than adjusting the height of `100vh` to be the visible portion of the screen as the viewport height changes, these browsers instead have `100vh` set to the height of the browser with the address bar hidden.
+>
+> The result is that the bottom portion of the screen will be cut off when the address bar is visible, thus defeating the purpose of `100vh` to begin with.
+>
+> &mdash; <cite>[David Chanin](https://chanind.github.io/about/), [Avoid 100vh On Mobile Web](https://chanind.github.io/javascript/2019/09/28/avoid-100vh-on-mobile-web.html)</cite>
+
+## Let's put this new Safari to the test
+
+I have [a simple HTML page](https://gist.github.com/LukeChannings/efdd456bccc3ee1459eacc663e9abc24) based on the example given in David's article.
+It has a header at the top and a button at the bottom, all wrapped in a `100vh` container.
+
+<div className="image-group-figure">
+  <figure>
+    <img
+      src={ios14ChromeUrl}
+      style={{ aspectRatio: "563 / 1219" }}
+      decoding="async"
+      loading="lazy"
+      alt="an image showing the aforementioned button hidden below the bottom UI controls in iOS 14's Mobile Safari"
+    />
+    <figcaption>Safari 14 with Chrome active</figcaption>
+  </figure>
+  <figure>
+    <img
+      src={ios15ChromeUrl}
+      style={{ aspectRatio: "563 / 1219" }}
+      decoding="async"
+      loading="lazy"
+      alt="an image showing the button being partially covered by the new floating address bar in iOS 15's Mobile Safari"
+    />
+    <figcaption>Safari 15 with Chrome active</figcaption>
+  </figure>
+</div>
+
+Safari's new floating address bar is displayed above our test button,
+which is more-or-less exactly the same behaviour as iOS 14.
+
+So - Safari 15 does not change the behavour of `100vh` 😢.
+
+### So what's the solution then?
+
+It makes sense to me that the WebKit team wouldn't change the behaviour of the viewport unit, it's already well defined.
+
+Do you remember when Apple introduced `env()` and `safe-area-inset` so
+that web developers could avoid their content being shown behind the notch[^4]?
+
+Well in Safari 14, `safe-area-inset-bottom` is `0px` whether the UI chrome is active or inactive,
+which is something that has annoyed me for a while.
+
+`safe-area-inset-bottom` is `0px` when the UI chrome is inactive in Safari 15 on iOS,
+and then **the height of the collapsed chrome minus the height of the expanded chrome** when the bar is expanded.
+
+That means that to get a button to float at the bottom of the page, always above the UI Chrome, all you have to do is use `calc(100vh - env(safe-area-inset-bottom))`.
+
+<div className="image-group-figure">
+  <figure>
+    <video
+      src={ios14SafeAreaInsetBottomUrl}
+      style={{ aspectRatio: "563 / 1219" }}
+      playsinline
+      loop
+      muted
+      autoplay
+      preload
+    ></video>
+    <figcaption>
+      Safari 14 with <strong>100vh - safe-area-inset-bottom</strong>
+    </figcaption>
+  </figure>
+  <figure>
+    <video
+      src={ios15SafeAreaInsetBottomUrl}
+      style={{ aspectRatio: "563 / 1219" }}
+      playsinline
+      loop
+      muted
+      autoplay
+      preload
+    ></video>
+    <figcaption>
+      Safari 15 with <strong>100vh - safe-area-inset-bottom</strong>
+    </figcaption>
+  </figure>
+</div>
+
+## Wrapping up
+
+So not only does `safe-area-inset-bottom` work in Safari 15, **it's animated**!
+
+I've been hoping that something to remedy the viewport height bug was coming since
+[Jen Simmons](https://jensimmons.com) (who joined the Safari / WebKit team in June 2020) was asking for feedback regarding viewport
+height issues.
+
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    Hey everyone who’s been frustrated that VH units in CSS don’t do what you
+    need… can you describe your usecase? What layout are you creating? With
+    which layout mechanism? What do you need? Screenshots &amp; sample code
+    appreciated.
+  </p>
+  &mdash; Jen Simmons (<a target="_blank" href="https://twitter.com/jensimmons">
+    @jensimmons
+  </a>) <a
+    target="_blank"
+    href="https://twitter.com/jensimmons/status/1393554029721104384?ref_src=twsrc%5Etfw"
+  >
+    May 15, 2021
+  </a>
+</blockquote>
+
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">
+    Have a feeling I’m going to be talking about Environment Variables a lot
+    this week. They are really cool &amp; supported!
+    <br />
+    <a
+      target="_blank"
+      href="https://developer.mozilla.org/en-US/docs/Web/CSS/env()"
+    >
+      https://developer.mozilla.org/en-US/docs/Web/CSS/env()
+    </a>
+    <br />
+    <a target="_blank" href="https://caniuse.com/css-env-function">
+      https://caniuse.com/css-env-function
+    </a>
+    <br />
+    <br />
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+    <br />
+    -or-
+    <br />
+    height: calc(100vh - env(safe-area-inset-bottom));
+  </p>
+  &mdash; Jen Simmons (<a target="_blank" href="https://twitter.com/jensimmons">
+    @jensimmons
+  </a>) <a
+    target="_blank"
+    href="https://twitter.com/jensimmons/status/1402028742772408327?ref_src=twsrc%5Etfw"
+  >
+    June 7, 2021
+  </a>
+</blockquote>
+
+It looks like this one's fixed!
+
+[^1]: https://bugs.webkit.org/show_bug.cgi?id=141832
+[^2]: https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+[^3]: https://github.com/w3c/csswg-drafts/issues/4329
+[^4]: https://webkit.org/blog/7929/designing-websites-for-iphone-x/

@@ -4,5 +4,12 @@ export const dateFormatter = (date: Date | string) => {
     month: "long",
     day: "numeric",
   })
-  return dateFormatter.format(typeof date === "string" ? new Date(date) : date)
+  try {
+    return dateFormatter.format(
+      typeof date === "string" ? new Date(date) : date,
+    )
+  } catch (err) {
+    console.warn(`Couldn't format ${date}`)
+    return date
+  }
 }

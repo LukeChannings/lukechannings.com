@@ -1,4 +1,6 @@
-export const dateFormatter = (date: Date | string) => {
+export const dateFormatter = (
+  date: Date | string | GatsbyTypes.Maybe<string>,
+) => {
   const dateFormatter = new Intl.DateTimeFormat("en-GB", {
     year: "numeric",
     month: "long",

@@ -3,12 +3,7 @@ import SEO from "../components/seo"
 
 export default () => (
   <>
-    <SEO
-      title={"Luke Channings is a freelance developer"}
-      description="Luke Channings is a freelance developer"
-      image="avatar.jpeg"
-      article
-    />
+    <SEO title={"Luke Channings is a freelance developer"} />
     <header>
       <h1 itemProp="name">
         Luke Channings{" "}

@@ -14,6 +14,7 @@ export default ({ data }: { data: GatsbyTypes.MDXBlogPageQuery }) => {
       <SEO
         title={data.mdx?.frontmatter?.title ?? "！NO TITLE！"}
         image={data.mdx?.frontmatter?.image}
+        description="Luke Channings's blog"
         article
       />
       <div className="wrapper">

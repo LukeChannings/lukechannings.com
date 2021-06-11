@@ -2,10 +2,7 @@ const buildDrafts = !!process.env.BUILD_DRAFTS
 const previewDomain = !!process.env.CFP_PREVIEW_DOMAIN
 
 const siteUrl = previewDomain
-  ? `https://${process.env.GIT_BRANCH_NAME.slice(
-      0,
-      28,
-    )}.${cloudflarePagesPreviewUrl}`
+  ? `https://${process.env.GIT_BRANCH_NAME.slice(0, 28)}.${previewDomain}`
   : `https://lukechannings.com/`
 
 module.exports = {

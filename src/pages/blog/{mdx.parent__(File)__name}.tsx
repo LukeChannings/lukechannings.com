@@ -2,6 +2,7 @@ import * as React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import SEO from "../../components/seo"
+import { dateFormatter } from "../../util"
 
 export default ({ data }: { data: GatsbyTypes.MDXBlogPageQuery }) => {
   if (!data.mdx) {
@@ -19,8 +20,11 @@ export default ({ data }: { data: GatsbyTypes.MDXBlogPageQuery }) => {
         <article itemScope itemType="http://schema.org/BlogPosting">
           <h1 itemProp="name">{data.mdx?.frontmatter?.title}</h1>
           <p>
-            Written by {data.mdx?.frontmatter?.author} on{" "}
-            {data.mdx?.frontmatter?.date}
+            Written by{" "}
+            <a href={data.site?.siteMetadata?.siteUrl}>
+              {data.mdx?.frontmatter?.author}
+            </a>{" "}
+            on {dateFormatter(data.mdx?.frontmatter?.date!)}
           </p>
           <MDXRenderer>{data.mdx?.body}</MDXRenderer>
         </article>
@@ -31,6 +35,11 @@ export default ({ data }: { data: GatsbyTypes.MDXBlogPageQuery }) => {
 
 export const query = graphql`
   query MDXBlogPage($id: String!) {
+    site {
+      siteMetadata {
+        siteUrl
+      }
+    }
     mdx(id: { eq: $id }) {
       frontmatter {
         title

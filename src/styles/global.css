@@ -9,7 +9,9 @@
   --blockquote-color: rgba(0, 0, 0, 0.05);
   --blockquote-line-color: #aaa;
   --inline-code-background: #c3ddf9;
-  --code-color: #161d52;
+  --inline-code-color: #161d52;
+  --code-block-background: #333;
+  --code-block-color: #fff;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,7 +26,7 @@
     --blockquote-color: rgba(255, 255, 255, 0.05);
     --blockquote-line-color: #aaa;
     --inline-code-background: #2c2f47;
-    --code-color: #bee1f5;
+    --inline-code-color: #bee1f5;
   }
 }
 
@@ -148,7 +150,7 @@ blockquote {
 p > code,
 figcaption > code {
   background: var(--inline-code-background);
-  color: var(--code-color);
+  color: var(--inline-code-color);
   border-radius: 4px;
   padding: 1px 2px;
   font-weight: bold;
@@ -157,6 +159,14 @@ figcaption > code {
 
 p > a {
   text-overflow: ellipsis;
+}
+
+pre {
+  margin-bottom: calc(25rem / 16);
+  padding: calc(10rem / 16);
+  border: 1px dashed #fff;
+  background: var(--code-block-background);
+  color: var(--code-block-color);
 }
 
 .image-group-figure {

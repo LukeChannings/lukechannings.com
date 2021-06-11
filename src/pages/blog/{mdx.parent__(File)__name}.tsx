@@ -11,16 +11,19 @@ export default ({ data }: { data: GatsbyTypes.MDXBlogPageQuery }) => {
   return (
     <>
       <SEO
-        title={data.mdx?.frontmatter?.title ?? ""}
-        description=""
-        image=""
+        title={data.mdx?.frontmatter?.title ?? "！NO TITLE！"}
+        image={data.mdx?.frontmatter?.image}
         article
       />
       <div className="wrapper">
-        <main>
-          <h1>{data.mdx?.frontmatter?.title}</h1>
+        <article itemScope itemType="http://schema.org/BlogPosting">
+          <h1 itemProp="name">{data.mdx?.frontmatter?.title}</h1>
+          <p>
+            Written by {data.mdx?.frontmatter?.author} on{" "}
+            {data.mdx?.frontmatter?.date}
+          </p>
           <MDXRenderer>{data.mdx?.body}</MDXRenderer>
-        </main>
+        </article>
       </div>
     </>
   )
@@ -32,6 +35,9 @@ export const query = graphql`
       frontmatter {
         title
         author
+        date
+        category
+        image
       }
       body
     }

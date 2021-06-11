@@ -1,12 +1,16 @@
+const buildDrafts = !!process.env.BUILD_DRAFTS
+
+console.log(process.env)
+
 module.exports = {
   siteMetadata: {
     title: `Luke Channings is a developer.`,
     titleTemplate: `%s · Luke Channings`,
-    description: "Luke Channings is a developer.",
+    description: "The website and blog of Luke Channings",
     author: `Luke Channings`,
     siteUrl: `https://lukechannings.com/`,
     twitterUsername: "@LukeChannings",
-    image: "avatar.jpeg",
+    image: "blog-image-default.jpeg",
   },
   flags: {
     FAST_DEV: true,
@@ -22,7 +26,7 @@ module.exports = {
       options: {
         name: `blogs`,
         path: `${__dirname}/blogs/`,
-        ignore: process.env.BUILD_DRAFTS ? [] : ["**/_*"],
+        ignore: buildDrafts ? [] : ["**/_*"],
       },
     },
     {

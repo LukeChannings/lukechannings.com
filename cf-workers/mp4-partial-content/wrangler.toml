@@ -1,0 +1,11 @@
+name = "mp4-partial-content"
+type = "javascript"
+zone_id = ""
+account_id = "e786da5e126c0561790a5fef0e9ad651"
+route = ""
+workers_dev = true
+
+[build]
+command = "npm install && npm run build"
+[build.upload]
+format = "service-worker"

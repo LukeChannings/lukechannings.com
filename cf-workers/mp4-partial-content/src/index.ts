@@ -1,10 +1,10 @@
 async function handleEvent(event: FetchEvent) {
   const request = event.request
-  const headers = new Map(event.request.headers)
   if (!event.request.url.endsWith('.mp4')) {
     return await fetch(request.url)
   }
 
+  const headers = new Map(event.request.headers)
   const cacheUrl = new URL(request.url)
   const cacheKey = new Request(cacheUrl.toString(), request)
   const cache = caches.default

@@ -8,7 +8,10 @@ async function handleEvent(event: FetchEvent) {
   const cacheUrl = new URL(request.url)
   const cacheKey = new Request(cacheUrl.toString(), request)
   const cache = caches.default
+
+  // If the cache hits we don't need to manually slice the body up because `cache.match` supports `range` headers natively. Nice 😍!
   let response = await cache.match(cacheKey)
+
   if (!response) {
     response = await fetch(request)
     response = new Response(response.body, response)
@@ -38,6 +41,7 @@ async function handleEvent(event: FetchEvent) {
       }
     }
   }
+ 
   return response
 }
 

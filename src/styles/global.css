@@ -167,6 +167,7 @@ pre {
   border: 1px dashed #fff;
   background: var(--code-block-background);
   color: var(--code-block-color);
+  overflow: auto;
 }
 
 .image-group-figure {

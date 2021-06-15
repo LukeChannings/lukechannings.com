@@ -41,7 +41,7 @@ async function handleEvent(event: FetchEvent) {
       }
     }
   }
- 
+
   return response
 }
 

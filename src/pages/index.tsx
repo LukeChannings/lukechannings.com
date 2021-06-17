@@ -399,7 +399,7 @@ export default () => {
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/channings/">Linkedin</a>
+            <a href="https://www.linkedin.com/in/luke-channings/">Linkedin</a>
           </li>
           <li>
             <a href="https://twitter.com/LukeChannings">Twitter</a>

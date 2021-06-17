@@ -189,6 +189,7 @@ pre {
 .image-group-figure figure > img,
 .image-group-figure figure > video {
   width: 100%;
+  height: auto;
   border: 1px dashed var(--horizontal-line-color);
 }
 

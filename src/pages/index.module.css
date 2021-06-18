@@ -1,0 +1,9 @@
+.header {
+  display: flex;
+}
+
+.avatar {
+  height: 5rem;
+  width: 5rem;
+  margin-right: 1rem;
+}

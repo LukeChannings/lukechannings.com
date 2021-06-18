@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import SEO from "../components/seo"
 import { dateFormatter } from "../util"
-import { header, avatar } from "./index.module.css"
+import styles from "./index.module.css"
 
 export default () => {
   const blogItems = useStaticQuery<GatsbyTypes.BlogListQuery>(graphql`
@@ -26,11 +26,11 @@ export default () => {
   return (
     <>
       <SEO title={"Luke Channings is a freelance developer"} />
-      <header className={header}>
+      <header className={styles.header}>
         <img
           src="/static/favicon-196.png"
           alt="A bearded white man smiling softly"
-          className={avatar}
+          className={styles.avatar}
         />
         <h1 itemProp="name">
           Luke Channings{" "}

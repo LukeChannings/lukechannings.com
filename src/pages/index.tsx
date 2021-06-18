@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import SEO from "../components/seo"
 import { dateFormatter } from "../util"
+import { header, avatar } from "./index.module.css"
 
 export default () => {
   const blogItems = useStaticQuery<GatsbyTypes.BlogListQuery>(graphql`
@@ -25,11 +26,16 @@ export default () => {
   return (
     <>
       <SEO title={"Luke Channings is a freelance developer"} />
-      <header>
+      <header className={header}>
+        <img
+          src="/static/favicon-196.png"
+          alt="A bearded white man smiling softly"
+          className={avatar}
+        />
         <h1 itemProp="name">
           Luke Channings{" "}
           <p>
-            is a <span itemProp="jobTitle">Freelance Developer</span> in{" "}
+            is a <span itemProp="jobTitle">Freelance Developer</span> based in{" "}
             <span itemProp="workLocation">London</span>
           </p>
         </h1>
@@ -37,92 +43,27 @@ export default () => {
 
       <section id="skills">
         <h2>Skills</h2>
-        <p>
-          <span aria-hidden="true">
-            <strong>TL; WR</strong>,{" "}
-          </span>
-          these are the buzzwords you’re looking for:
-        </p>
         <ul>
           <li>
-            <span itemProp="knowsAbout">Front-End Architecture</span>
+            I have over 10 years experience creating all sorts of things for the
+            web;
           </li>
           <li>
-            <span itemProp="knowsAbout">React</span>
-            {", "}
-            <span itemProp="knowsAbout">Redux</span>
-            {", "}
-            <span itemProp="knowsAbout">CSS Modules</span>, etc.
+            A deep understanding of the Frontend toolchain &mdash; I've built
+            component libraries, codemods, and more custom Webpack
+            configurations than I care to count.
           </li>
           <li>
-            <span itemProp="knowsAbout">JavaScript</span> (all versions, ESM,
-            Babel, TS, etc)
+            I keep up-to-date on new and upcoming web platform features, have a
+            knowledge of browser support, and I do progressive enhancement by
+            default.
           </li>
           <li>
-            <span itemProp="knowsAbout">Webpack</span>
-            {" | "}
-            <span itemProp="knowsAbout">Make</span>
-            {" | "}
-            <span itemProp="knowsAbout">Grunt</span>
+            I'm aware that not everyone uses the web the same way, and I care
+            about keeping the web accessible for everyone.
           </li>
-          <li>
-            <span itemProp="knowsAbout">Node.js</span>
-          </li>
-          <li>
-            <span itemProp="knowsAbout">Express</span>
-            {" | "}
-            <span itemProp="knowsAbout">Koa</span>
-            {", "}
-            <span itemProp="knowsAbout">Swagger</span> for designing REST APIs
-            (and API Gateway security)
-          </li>
-          <li>
-            Testing with <span itemProp="knowsAbout">Jest</span>, usually
-          </li>
-          <li>
-            <span itemProp="knowsAbout">GitLab</span>
-            {", "}
-            <span itemProp="knowsAbout">Jenkins</span>
-            {", "}
-            <span itemProp="knowsAbout">S3</span>
-            {", "}
-            <span itemProp="knowsAbout">CloudFront</span>
-            {", "}
-            <span itemProp="knowsAbout">Lambda</span>, Terraform, AWSCLI, and
-            lest we forget good ol' SSH and SCP.
-          </li>
+          <li>I can even write maintainable CSS without a preprocessor!</li>
         </ul>
-        <hr />
-        <p>
-          I have extensive experience working on large JavaScript projects, from
-          front-end architecture to weighing in on DevOps. I have a wide range
-          of skills but like to focus on JavaScript development and architecture
-          (on the front-end and back-end) at much as possible.
-        </p>
-        <p>
-          For my last major front-end project I worked with React, which
-          involved helping to design a front-end architecture that was
-          server-rendered (ReactJS.NET), and used Redux for useful features such
-          as serialisable and immutable application state, which makes time
-          travel debugging possible, as well as allowing the capture of
-          application state exactly in an error case.
-        </p>
-        <p>
-          For my last end-to-end project, I was involved in many aspects of
-          development (including front-end architecture), and also contributed
-          to some micro-service development, built on Node and built, tested,
-          and deployed within Docker containers. Container orchestration with
-          Rancher Server, using AWS to host and run the infrastructure.
-        </p>
-        <p>
-          I prefer pure JavaScript whenever possible, and preferably the latest
-          flavour. I like to keep my finger on the pulse of the JavaScript
-          community, and I'm usually aware of new language features, tooling,
-          and frameworks (and if I'm not, I catch on quickly). I've also spent a
-          lot of time with 'NIX systems, and am a lot more at home on macOS or
-          Linux than Windows, so I fit right in writing shell scripts or
-          configuring a Linux server.
-        </p>
       </section>
 
       <section id="availability">
@@ -140,8 +81,8 @@ export default () => {
               Mosaic Smart Data (October 2019 - Present)
             </h3>
             <p>
-              <em>Job Title</em>: UI Engineer <em>Tech</em>: React, Redux, Jest,
-              Node.js, Highcharts, D3, Electron, Storybook
+              <em>Job Title</em>: UI Engineer <em>Tech</em>: React, Redux,
+              TypeScript, Protocol Buffers, Highcharts, AG-Grid, D3, Storybook
             </p>
           </summary>
 
@@ -274,7 +215,7 @@ export default () => {
       </section>
 
       <section id="some-things-ive-worked-on">
-        <h2>Things I've worked on</h2>
+        <h2>Work</h2>
         <ul>
           <li>
             <a
@@ -340,33 +281,32 @@ export default () => {
             </a>
           </li>
           <li>
-            <a target="_blank" href="https://github.com/LukeChannings/.config">
-              .config
-            </a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              href="https://github.com/LukeChannings/space-invaders"
-            >
-              space-invaders FRP
-            </a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              href="https://github.com/LukeChannings/translate-json-cli"
-            >
-              translate-json-cli tool
-            </a>
-          </li>
-          <li>
             <a
               target="_blank"
               href="https://github.com/Pizzaface/Alexa-Chromecast-Skill-2.0"
             >
               Alexa Skill to control a Chromecast
             </a>
+          </li>
+        </ul>
+      </section>
+
+      <section id="where-to-find-me">
+        <h2>Contact</h2>
+        <ul>
+          <li>
+            <a href="mailto:contact@lukechannings.com" className="email">
+              Email
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/luke-channings/">Linkedin</a>
+          </li>
+          <li>
+            <a href="https://github.com/LukeChannings">GitHub</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/LukeChannings">Twitter</a>
           </li>
         </ul>
       </section>
@@ -387,34 +327,11 @@ export default () => {
         </ul>
       </section>
 
-      <section id="where-to-find-me">
-        <h2>Contact &amp; Social</h2>
-        <ul>
-          <li>
-            <a
-              href="&#x6d;&#x61;&#x69;&#108;&#116;&#x6f;&#58;&#x63;&#x6f;&#110;&#116;&#x61;&#x63;&#116;&#64;&#108;&#x75;&#x6b;&#x65;&#x63;&#104;&#x61;&#110;&#110;&#x69;&#110;&#x67;&#x73;&#46;&#x63;&#x6f;&#x6d;"
-              className="email"
-            >
-              &#x45;&#x6d;&#x61;&#x69;&#108;
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/luke-channings/">Linkedin</a>
-          </li>
-          <li>
-            <a href="https://twitter.com/LukeChannings">Twitter</a>
-          </li>
-          <li>
-            <a href="https://github.com/LukeChannings">GitHub</a>
-          </li>
-        </ul>
-      </section>
-
       <section id="hobbies">
         <h2>What else do I do?</h2>
         <ul>
           <li>
-            I have a new love for home automation. I've got deep into{" "}
+            I am deep into home automation, using{" "}
             <a href="https://en.wikipedia.org/wiki/MQTT">MQTT</a>
             {", "}
             <a href="https://github.com/Koenkk/zigbee2mqtt">Zigbee</a>
@@ -431,12 +348,6 @@ export default () => {
             I like to spend the weekends going on day-long hikes in the country.
             Walking has always been a great way to clear my head and get some
             exercise!
-          </li>
-          <li>
-            I'm a massive coffee snob. All of my coffee beans are fresh and I
-            own a Rancillio Silvia + Rocky (espresso), a Hario V60 (pour-over),
-            and Aeropress, and a French Press. I love learning about coffee,
-            there's a lot of depth to it even though it seems simple at first.
           </li>
         </ul>
       </section>

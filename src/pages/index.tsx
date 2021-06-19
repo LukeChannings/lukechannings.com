@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import SEO from "../components/seo"
 import { dateFormatter } from "../util"
+import avatarUrl from "../../static/favicon-196.png"
 import * as styles from "./index.module.css"
 
 export default () => {
@@ -28,8 +29,10 @@ export default () => {
       <SEO title={"Luke Channings is a freelance developer"} />
       <header className={styles.header}>
         <img
-          src="/static/favicon-196.png"
+          src={avatarUrl}
           alt="A bearded white man smiling softly"
+          width="196"
+          height="196"
           className={styles.avatar}
         />
         <h1 itemProp="name">

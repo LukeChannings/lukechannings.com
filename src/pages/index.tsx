@@ -48,7 +48,7 @@ export default () => {
         <h2>Skills</h2>
         <ul>
           <li>
-            I have over 10 years experience creating all sorts of things for the
+            Verging on 10 years experience creating all sorts of things for the
             web;
           </li>
           <li>
@@ -78,6 +78,7 @@ export default () => {
       </section>
 
       <section id="work-history">
+        <h2>Work History</h2>
         <details>
           <summary>
             <h3 id="mosaic-october-2019">
@@ -314,7 +315,7 @@ export default () => {
         </ul>
       </section>
 
-      <section id="blogs">
+      <section id="blogs" data-hide-from-cv>
         <h2>Blogs</h2>
         <ul>
           {blogItems.allMdx.edges.map(({ node }) => {
@@ -330,7 +331,7 @@ export default () => {
         </ul>
       </section>
 
-      <section id="hobbies">
+      <section id="hobbies" data-hide-from-cv>
         <h2>What else do I do?</h2>
         <ul>
           <li>

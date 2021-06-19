@@ -5,12 +5,19 @@ import { useStaticQuery, graphql } from "gatsby"
 
 interface SEOProps {
   title: string
+  useTitleTemplate?: boolean
   description?: string
   image?: string
   article?: boolean
 }
 
-const SEO = ({ title, description, image, article }: SEOProps) => {
+const SEO = ({
+  title,
+  description,
+  image,
+  article,
+  useTitleTemplate = true,
+}: SEOProps) => {
   const { pathname } = useLocation()
   const { site } = useStaticQuery<GatsbyTypes.SEOQuery>(query)
 
@@ -30,7 +37,10 @@ const SEO = ({ title, description, image, article }: SEOProps) => {
   }
 
   return (
-    <Helmet title={seo.title} titleTemplate={titleTemplate}>
+    <Helmet
+      title={seo.title}
+      titleTemplate={useTitleTemplate ? titleTemplate : "%s"}
+    >
       {seo.description && <meta name="description" content={seo.description} />}
       <meta name="image" content={seo.image} />
 

@@ -26,7 +26,10 @@ export default () => {
   `)
   return (
     <>
-      <SEO title={"Luke Channings is a freelance developer"} />
+      <SEO
+        title={"Luke Channings is a Freelance Developer based in London"}
+        useTitleTemplate={false}
+      />
       <header className={styles.header}>
         <img
           src={avatarUrl}

@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import SEO from "../components/seo"
 import { dateFormatter } from "../util"
-import styles from "./index.module.css"
+import * as styles from "./index.module.css"
 
 export default () => {
   const blogItems = useStaticQuery<GatsbyTypes.BlogListQuery>(graphql`

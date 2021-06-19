@@ -1,4 +1,4 @@
-# Luke Channings is a Developer.
+# Luke Channings is a Freelance Developer based in London.
 
 ## Blog
 

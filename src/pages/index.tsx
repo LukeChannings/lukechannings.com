@@ -28,7 +28,7 @@ export default () => {
     <>
       <SEO
         title={"Luke Channings"}
-        description={"Luke Channings is a Freelance Developer based in London"}
+        description={"A Freelance JavaScript Developer based in London"}
         useTitleTemplate={false}
       />
       <header className={styles.header}>

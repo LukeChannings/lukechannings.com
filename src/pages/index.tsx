@@ -27,21 +27,22 @@ export default () => {
   return (
     <>
       <SEO
-        title={"Luke Channings is a Freelance Developer based in London"}
+        title={"Luke Channings"}
+        description={"Luke Channings is a Freelance Developer based in London"}
         useTitleTemplate={false}
       />
       <header className={styles.header}>
         <img
           src={avatarUrl}
-          alt="A bearded white man smiling softly"
+          alt=""
           width="196"
           height="196"
           className={styles.avatar}
         />
         <h1 itemProp="name">
-          Luke Channings{" "}
+          Luke Channings
           <p>
-            is a <span itemProp="jobTitle">Freelance Developer</span> based in{" "}
+            {" "}is a <span itemProp="jobTitle">Freelance Developer</span> based in{" "}
             <span itemProp="workLocation">London</span>
           </p>
         </h1>

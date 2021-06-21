@@ -40,9 +40,9 @@ export default () => {
           className={styles.avatar}
         />
         <h1 itemProp="name">
-          Luke Channings
+          Luke Channings{" "}
           <p>
-            {" "}is a <span itemProp="jobTitle">Freelance Developer</span> based in{" "}
+            is a <span itemProp="jobTitle">Freelance Developer</span> based in{" "}
             <span itemProp="workLocation">London</span>
           </p>
         </h1>

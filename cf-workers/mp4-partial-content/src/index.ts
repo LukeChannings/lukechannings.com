@@ -4,45 +4,20 @@ async function handleEvent(event: FetchEvent) {
     return await fetch(request.url)
   }
 
-  const headers = new Map(event.request.headers)
   const cacheUrl = new URL(request.url)
   const cacheKey = new Request(cacheUrl.toString(), request)
   const cache = caches.default
 
-  // If the cache hits we don't need to manually slice the body up because `cache.match` supports `range` headers natively. Nice 😍!
-  let response = await cache.match(cacheKey)
+  const cachedResponse = await cache.match(cacheKey)
 
-  if (!response) {
-    response = await fetch(request)
-    response = new Response(response.body, response)
-    response.headers.append('Cache-Control', 's-maxage=10')
+  if (cachedResponse) return cachedResponse
 
-    event.waitUntil(cache.put(cacheKey, response.clone()))
+  const response = await fetch(request)
 
-    if (headers.get('range')) {
-      const { from, to } =
-        headers.get('range')?.match(/^bytes=(?<from>[0-9]+)-(?<to>[0-9]*)$/)
-          ?.groups ?? {}
-      const arrayBuffer = await response.arrayBuffer()
-      if (to === '' || Number(to) <= arrayBuffer.byteLength) {
-        const sliced = arrayBuffer.slice(
-          Number(from),
-          Number(to ?? arrayBuffer.byteLength),
-        )
-        return new Response(sliced, {
-          ...response,
-          status: 206,
-          headers: new Headers([
-            ...response.headers,
-            ['content-range', `bytes ${from}-${to}/${arrayBuffer.byteLength}`],
-            ['content-length', String(sliced.byteLength)],
-          ]),
-        })
-      }
-    }
-  }
-
-  return response
+  // Do the inefficient thing and wait for the cache to be set before continuing.
+  // This is much more reliable than writing my own HTTP 206 implementation (I tried).
+  await cache.put(cacheKey, response.clone())
+  return (await cache.match(cacheKey))!
 }
 
 addEventListener('fetch', (event) => {

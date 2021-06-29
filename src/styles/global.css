@@ -169,7 +169,6 @@ pre {
   color: var(--code-block-color);
   overflow: auto;
 }
-
 .image-group-figure {
   display: flex;
   flex-direction: column;
@@ -212,4 +211,22 @@ pre {
 .footnotes li:target a:first-of-type {
   background-color: rgb(255, 240, 107);
   color: #000;
+}
+
+@media print {
+  body {
+    padding-bottom: 0;
+  }
+
+  summary::-webkit-details-marker,
+  summary::marker,
+  [data-hide-from-cv] {
+    display: none;
+  }
+  ::marker {
+    display: none;
+  }
+  summary {
+    list-style: none;
+  }
 }

@@ -2,7 +2,8 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import SEO from "../components/seo"
 import { dateFormatter } from "../util"
-import styles from "./index.module.css"
+import avatarUrl from "../../static/favicon-196.png"
+import * as styles from "./index.module.css"
 
 export default () => {
   const blogItems = useStaticQuery<GatsbyTypes.BlogListQuery>(graphql`
@@ -25,11 +26,17 @@ export default () => {
   `)
   return (
     <>
-      <SEO title={"Luke Channings is a freelance developer"} />
+      <SEO
+        title={"Luke Channings"}
+        description={"A Freelance JavaScript Developer based in London"}
+        useTitleTemplate={false}
+      />
       <header className={styles.header}>
         <img
-          src="/static/favicon-196.png"
-          alt="A bearded white man smiling softly"
+          src={avatarUrl}
+          alt=""
+          width="196"
+          height="196"
           className={styles.avatar}
         />
         <h1 itemProp="name">
@@ -45,7 +52,7 @@ export default () => {
         <h2>Skills</h2>
         <ul>
           <li>
-            I have over 10 years experience creating all sorts of things for the
+            Verging on 10 years experience creating all sorts of things for the
             web;
           </li>
           <li>
@@ -75,6 +82,7 @@ export default () => {
       </section>
 
       <section id="work-history">
+        <h2>Work History</h2>
         <details>
           <summary>
             <h3 id="mosaic-october-2019">
@@ -311,7 +319,7 @@ export default () => {
         </ul>
       </section>
 
-      <section id="blogs">
+      <section id="blogs" data-hide-from-cv>
         <h2>Blogs</h2>
         <ul>
           {blogItems.allMdx.edges.map(({ node }) => {
@@ -327,7 +335,7 @@ export default () => {
         </ul>
       </section>
 
-      <section id="hobbies">
+      <section id="hobbies" data-hide-from-cv>
         <h2>What else do I do?</h2>
         <ul>
           <li>

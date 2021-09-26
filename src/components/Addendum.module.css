@@ -1,0 +1,8 @@
+.addendum {
+  --text-color: white;
+  width: 100%;
+  padding: 1rem 1rem 1px;
+  background-color: var(--text-emphasis-color);
+  margin-bottom: calc(15rem / 16);
+  border-left: 0.5rem solid hsl(345deg 95% 68%);
+}

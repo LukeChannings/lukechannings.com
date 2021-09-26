@@ -12,7 +12,16 @@ import ios15ChromeUrl from "./assets/ios15-with-chrome.jpg"
 import ios14SafeAreaInsetBottomUrl from "./assets/ios14-safe-area-inset-bottom.mp4"
 import ios15SafeAreaInsetBottomUrl from "./assets/ios15-safe-area-inset-bottom.mp4"
 
-**TL;DR**: [No](https://en.wikipedia.org/wiki/Betteridge's_law_of_headlines), but if you subtract `env(safe-area-inset-bottom)` from `100vh` you'll get what you want.
+<Addendum>
+  The design for Safari 15 has been very controvercial, and has changed
+  significantly since the beta that this article was based on Sadly, one of the
+  casualties of the evolving design was the main thrust of this article:{" "}
+  <code>env(safe-area-inset-bottom)</code> is no longer dynamically the height
+  of the address bar in the final release.
+  <br />
+</Addendum>
+
+**TL;DR**: [No](https://en.wikipedia.org/wiki/Betteridge's_law_of_headlines), ~~but if you subtract `env(safe-area-inset-bottom)` from `100vh` you'll get what you want~~.
 
 Safari 15's UI is a radical departure from the previous version &mdash; and from web browsers in general &mdash; but does it fix the viewport height problem?
 
@@ -179,7 +188,7 @@ height issues.
   </a>
 </blockquote>
 
-It looks like this one's fixed!
+<strike>It looks like this one's fixed!</strike>
 
 [^1]: https://bugs.webkit.org/show_bug.cgi?id=141832
 [^2]: https://css-tricks.com/the-trick-to-viewport-units-on-mobile/

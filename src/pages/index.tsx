@@ -27,13 +27,14 @@ export default () => {
   return (
     <>
       <SEO
-        title={"Luke Channings is a Freelance Developer based in London"}
+        title={"Luke Channings"}
+        description={"A Freelance JavaScript Developer based in London"}
         useTitleTemplate={false}
       />
       <header className={styles.header}>
         <img
           src={avatarUrl}
-          alt="A bearded white man smiling softly"
+          alt=""
           width="196"
           height="196"
           className={styles.avatar}
@@ -76,7 +77,7 @@ export default () => {
         <h2>Availability</h2>
 
         <p>
-          I am available for new contracts in <strong>September, 2021</strong>!
+          I am available for new contracts in <strong>February, 2022</strong>!
         </p>
       </section>
 

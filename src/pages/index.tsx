@@ -52,8 +52,8 @@ export default () => {
         <h2>Skills</h2>
         <ul>
           <li>
-            Verging on 10 years experience creating all sorts of things for the
-            web;
+            Verging on 10 years of professional experience creating all sorts of
+            things for the web;
           </li>
           <li>
             A deep understanding of the Frontend toolchain &mdash; I've built
@@ -77,7 +77,7 @@ export default () => {
         <h2>Availability</h2>
 
         <p>
-          I am available for new contracts in <strong>February, 2022</strong>!
+          I am available for new contracts in <strong>February, 2022</strong>
         </p>
       </section>
 

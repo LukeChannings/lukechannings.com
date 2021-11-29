@@ -10,7 +10,8 @@
     "format": "prettier --ignore-path .gitignore -w \"**/*.{js,ts,tsx,json,markdown}\"",
     "lint": "run-p lint:*",
     "lint:codestyle": "prettier --ignore-path .gitignore -c \"**/*.{js,ts,tsx,json,markdown}\"",
-    "lint:typescript": "tsc"
+    "lint:typescript": "tsc",
+    "generate-cv": "deno run -A --unstable ./generate-cv-pdf.ts"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.22",

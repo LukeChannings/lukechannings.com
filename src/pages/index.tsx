@@ -94,8 +94,7 @@ export default () => {
           </summary>
 
           <p>
-            Mosaic is a small FinTech start-up building data insights and
-            visualisations that large banks can't.
+           CAIS is a US-based FinTech company. 
           </p>
         </details>
         <details>

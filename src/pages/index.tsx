@@ -77,7 +77,7 @@ export default () => {
         <h2>Availability</h2>
 
         <p>
-          I am available for new contracts in <strong>February, 2022</strong>
+          I am available for new contracts in <strong>September, 2022</strong>
         </p>
       </section>
 
@@ -85,8 +85,23 @@ export default () => {
         <h2>Work History</h2>
         <details>
           <summary>
+            <h3 id="cais-feb-2022">
+              CAIS (February 2022 - present)
+            </h3>
+            <p>
+              <em>Job Title</em>: UI Engineer <em>Tech</em>: React, GraphQL, Nx, Recoil, Storybook
+            </p>
+          </summary>
+
+          <p>
+            Mosaic is a small FinTech start-up building data insights and
+            visualisations that large banks can't.
+          </p>
+        </details>
+        <details>
+          <summary>
             <h3 id="mosaic-october-2019">
-              Mosaic Smart Data (October 2019 - Present)
+              Mosaic Smart Data (October 2019 - January 2022)
             </h3>
             <p>
               <em>Job Title</em>: UI Engineer <em>Tech</em>: React, Redux,

@@ -330,6 +330,9 @@ export default () => {
           <li>
             <a href="https://twitter.com/LukeChannings">Twitter</a>
           </li>
+          <li>
+            <a rel="me" href="https://fosstodon.org/@lukechannings">Mastodon</a>
+          </li>
         </ul>
       </section>
 

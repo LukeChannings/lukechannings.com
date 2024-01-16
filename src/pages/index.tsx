@@ -77,7 +77,7 @@ export default () => {
         <h2>Availability</h2>
 
         <p>
-          I am available for new contracts in <strong>February, 2024</strong>
+          I am looking for permanent roles to start in <strong>mid-April, 2024</strong>
         </p>
       </section>
 

@@ -48,7 +48,7 @@ export default () => {
         </h1>
       </header>
 
-      <section id="skills">
+      <section id="skills" hidden>
         <h2>Skills</h2>
         <ul>
           <li>
@@ -73,15 +73,7 @@ export default () => {
         </ul>
       </section>
 
-      <section id="availability">
-        <h2>Availability</h2>
-
-        <p>
-          I am looking for permanent roles to start in <strong>mid-April, 2024</strong>
-        </p>
-      </section>
-
-      <section id="work-history">
+      <section id="work-history" hidden>
         <h2>Work History</h2>
         <details>
           <summary>
@@ -236,9 +228,34 @@ export default () => {
         </details>
       </section>
 
-      <section id="some-things-ive-worked-on">
-        <h2>Work</h2>
+      <section id="blogs" data-hide-from-cv>
+        <h2>Blogs</h2>
         <ul>
+          {blogItems.allMdx.edges.map(({ node }) => {
+            return (
+              <li key={node.slug}>
+                <a href={`/blog/${node.slug}`}>
+                  {dateFormatter(node.frontmatter?.date)} ·{" "}
+                  {node.frontmatter?.title}
+                </a>
+              </li>
+            )
+          })}
+        </ul>
+      </section>
+
+      <section id="some-things-ive-worked-on">
+        <h2>Some things I've worked on</h2>
+        <ul>
+          <li>
+            <a
+              target="_blank"
+              href="https://raw.githubusercontent.com/LukeChannings/lukechannings.com/refs/heads/main/static/luke-channings-temperature-stability-espresso-gesha-report-17-09-2023.pdf"
+              className="uri"
+            >
+              MSc dissertation - Temperature Stability in Consumer-Grade Semi-Automatic Espresso Machines
+            </a>
+          </li>
           <li>
             <a
               target="_blank"
@@ -317,62 +334,18 @@ export default () => {
         <h2>Contact</h2>
         <ul>
           <li>
-            <a href="mailto:contact@lukechannings.com" className="email">
-              Email
-            </a>
+            <a href="https://github.com/LukeChannings">GitHub</a>
+          </li>
+          <li>
+            <a rel="me" href="https://fosstodon.org/@lukechannings">Mastodon</a>
           </li>
           <li>
             <a href="https://www.linkedin.com/in/luke-channings/">Linkedin</a>
           </li>
           <li>
-            <a href="https://github.com/LukeChannings">GitHub</a>
-          </li>
-          <li>
-            <a href="https://twitter.com/LukeChannings">Twitter</a>
-          </li>
-          <li>
-            <a rel="me" href="https://fosstodon.org/@lukechannings">Mastodon</a>
-          </li>
-        </ul>
-      </section>
-
-      <section id="blogs" data-hide-from-cv>
-        <h2>Blogs</h2>
-        <ul>
-          {blogItems.allMdx.edges.map(({ node }) => {
-            return (
-              <li key={node.slug}>
-                <a href={`/blog/${node.slug}`}>
-                  {dateFormatter(node.frontmatter?.date)} ·{" "}
-                  {node.frontmatter?.title}
-                </a>
-              </li>
-            )
-          })}
-        </ul>
-      </section>
-
-      <section id="hobbies" data-hide-from-cv>
-        <h2>What else do I do?</h2>
-        <ul>
-          <li>
-            I am deep into home automation, using{" "}
-            <a href="https://en.wikipedia.org/wiki/MQTT">MQTT</a>
-            {", "}
-            <a href="https://github.com/Koenkk/zigbee2mqtt">Zigbee</a>
-            {", "}
-            <a href="https://www.home-assistant.io">Home Assistant</a>
-            {", and "}
-            <a href="https://developer.amazon.com/alexa">Alexa</a>. IoT and Home
-            Automation are two things that are very hard to do without big
-            security risks, and I spend some of my free time designing a home
-            automation system that works offline and doesn't need cloud
-            services.
-          </li>
-          <li>
-            I like to spend the weekends going on day-long hikes in the country.
-            Walking has always been a great way to clear my head and get some
-            exercise!
+            <a href="mailto:contact@lukechannings.com" className="email">
+              Email
+            </a>
           </li>
         </ul>
       </section>
